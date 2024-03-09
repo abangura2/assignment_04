@@ -45,7 +45,7 @@ try:
             except ValueError:
                 valid_record = False
                 error_message += "Non-numeric transaction amount. "
-                
+
             if not valid_record:
                 rejected_records.append((row, error_message))
                 continue
@@ -54,16 +54,20 @@ try:
             total_transaction_amount += transaction_amount
 
             if valid_record:
+                transaction_count+= transaction_amount
+                total_transaction_amount += total_transaction_amount
+
                 # Initialize the customer's account balance if it doesn't already exist
                 if customer_id not in customer_data:
                     customer_data[customer_id] = {'balance': 0, 'transactions': []}
 
                 # Update the customer's account balance based on the transaction type
-                elif transaction_type == 'deposit':
+                if transaction_type == 'deposit':
                     customer_data[customer_id]['balance'] += transaction_amount
                     transaction_count += 1
                     total_transaction_amount += transaction_amount
-                elif transaction_type == 'withdrawal':
+
+                if transaction_type == 'withdrawal':
                     customer_data[customer_id]['balance'] += transaction_amount
                     transaction_count += 1
                     total_transaction_amount += transaction_amount
@@ -72,6 +76,8 @@ try:
                 customer_data[customer_id]['transactions'].append((transaction_amount, transaction_type))
         
             ### COLLECT INVALID RECORDS ###
+            rejected_records.append((row, error_message))
+            
 except FileNotFoundError as e:
     print(f"ERROR: {e}")
 except Exception as e:
