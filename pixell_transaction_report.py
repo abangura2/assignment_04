@@ -29,15 +29,29 @@ try:
             error_message = ''
 
             # Extract the customer ID from the first column
-             customer_id = row[0]
+            customer_id = row[0]
         
              # Extract the transaction type from the second column
             transaction_type = row[1]
              ### VALIDATION 1 ###
+            if transaction_type not in valid_transaction_types:
+                valid_record=False
+                error_message += "Invalid transaction type. "
 
             # Extract the transaction amount from the third column
             ### VALIDATION 2 ###
-            transaction_amount = float(row[2])
+            try:
+                transaction_amount = float(row[2])
+            except ValueError:
+                valid_record = False
+                error_message += "Non-numeric transaction amount. "
+                
+            if not valid_record:
+                rejected_records.append((row, error_message))
+                continue
+
+            transaction_count+= 1
+            total_transaction_amount += transaction_amount
 
             if valid_record:
                 # Initialize the customer's account balance if it doesn't already exist
@@ -49,7 +63,7 @@ try:
                     customer_data[customer_id]['balance'] += transaction_amount
                     transaction_count += 1
                     total_transaction_amount += transaction_amount
-                 elif transaction_type == 'withdrawal':
+                elif transaction_type == 'withdrawal':
                     customer_data[customer_id]['balance'] += transaction_amount
                     transaction_count += 1
                     total_transaction_amount += transaction_amount
