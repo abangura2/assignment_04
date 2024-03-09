@@ -33,10 +33,11 @@ try:
         
              # Extract the transaction type from the second column
             transaction_type = row[1]
+
              ### VALIDATION 1 ###
             if transaction_type not in valid_transaction_types:
                 valid_record=False
-                error_message += "Invalid transaction type. "
+                error_message += "Not a valid transaction type. "
 
             # Extract the transaction amount from the third column
             ### VALIDATION 2 ###
@@ -77,7 +78,7 @@ try:
         
             ### COLLECT INVALID RECORDS ###
             rejected_records.append((row, error_message))
-            
+
 except FileNotFoundError as e:
     print(f"ERROR: {e}")
 except Exception as e:

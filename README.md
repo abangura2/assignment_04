@@ -21,3 +21,6 @@ Logging is like keeping a journal for our program. It helps us to understand wha
 
 ## Code Modification:
 Added data validation for transaction types and transaction amounts to ensure that only valid transactions are processed. Invalid records are collected and stored separately for further analysis.
+
+## Code Modification:
+Troubleshooted the code to ensure proper reading of data from the file. Added breakpoints to track the values of variables like customer_id, transaction_type, and transaction_amount
