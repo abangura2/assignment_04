@@ -18,3 +18,6 @@ Logging is like keeping a journal for our program. It helps us to understand wha
 
  ## Code Modification:
   Added exception handling to handle cases where the input file cannot be located. 
+
+## Code Modification:
+Added data validation for transaction types and transaction amounts to ensure that only valid transactions are processed. Invalid records are collected and stored separately for further analysis.
