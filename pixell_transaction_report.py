@@ -1,8 +1,8 @@
 """
 Description: A program that reads through transaction records and reports the results.
 Author: ACE Faculty
-Edited by: {Student Name}
-Date: {Date}
+Edited by: {AbdulRahman_Hassan_Bangura}
+Date: {7/03/2024}
 Usage: This program will read transaction data from a .csv file, summarize and 
 report the results.
 """
@@ -68,7 +68,7 @@ try:
                     transaction_count += 1
                     total_transaction_amount += transaction_amount
 
-                if transaction_type == 'withdrawal':
+                elif transaction_type == 'withdrawal':
                     customer_data[customer_id]['balance'] += transaction_amount
                     transaction_count += 1
                     total_transaction_amount += transaction_amount
@@ -89,14 +89,14 @@ print("PiXELL River Transaction Report\n===============================\n")
 for customer_id, data in customer_data.items():
     balance = data['balance']
 
-    print(f"\nCustomer {customer_id} has a balance of {balance}.")
+    print(f"\nCustomer {customer_id} has a balance of {balance}")
     # Print the transaction history for the customer
     print("Transaction History:")
     for transaction in data['transactions']:
         amount, type = transaction
-        print(f"\t{type.capitalize()}: {amount}")
+        print(f"\t{type.capitalize()}: {amount:}")
 
-print(f"\nAVERAGE TRANSACTION AMOUNT: {(total_transaction_amount / transaction_counter)}")
+print(f"\nAVERAGE TRANSACTION AMOUNT: {(transaction_amount/transaction_count)}")
 
 print("\nREJECTED RECORDS\n================")
 for record in rejected_records:
