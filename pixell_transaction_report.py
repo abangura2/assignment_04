@@ -36,7 +36,7 @@ try:
 
              ### VALIDATION 1 ###
             if transaction_type not in valid_transaction_types:
-                valid_record=False
+                valid_record = False
                 error_message += "Not a valid transaction type. "
 
             # Extract the transaction amount from the third column
