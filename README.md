@@ -24,3 +24,5 @@ Added data validation for transaction types and transaction amounts to ensure th
 
 ## Code Modification:
 Troubleshooted the code to ensure proper reading of data from the file. Added breakpoints to track the values of variables like customer_id, transaction_type, and transaction_amount
+## code modification 
+adding ammounts to bank_data.csv and continue testing 
